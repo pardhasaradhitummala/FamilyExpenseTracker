@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% include 'navbar.html' %}
+{% load static %}
+<html>
+
+<head>
+    <title>see family</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/seefamily.css'%}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-12">
+                <table class="table ">
+                    <thead class="table table-dark">
+
+                    <tr>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Income</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Remove</th>
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{i.firstname}}</td>
+                        <td>{{i.lastname}}</td>
+                        <td>{{i.income}}</td>
+                        <td><a href="{% url 'FamilyLogin:update' i.id %}" class="btn btn-primary">Update</a></td>
+                        <td><a href="{% url 'FamilyLogin:delete' i.id %}" class="btn btn-danger">Delete</a></td>
+
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

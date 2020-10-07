@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+{% include 'navbar.html' %}
+<html>
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/familyperson.css'%}">
+</head>
+
+<body>
+    <form action="logoutuser">
+        <input type="submit" value="Logout" class="btn btn-primary viewend">
+    </form>
+    <div class="container">
+        <h2> Hello {{user}}!! Welcome to your savings calculator</h2>
+        <img src="{% static 'images/savings.jpg'%}" width="650">
+
+    </div>
+
+</body>
+
+</html>

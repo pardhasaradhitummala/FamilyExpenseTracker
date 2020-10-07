@@ -1,0 +1,10 @@
+.container{
+    width: 60%;
+    margin: 40px auto;
+}
+.viewend{
+    position: absolute;
+    display: block;
+    top: 110px;
+    right: 80px;
+}

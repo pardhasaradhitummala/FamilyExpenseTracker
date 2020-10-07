@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% include 'navbar.html' %}
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/addexpenses.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <form action="" method="post">
+            {% csrf_token %}
+            <select class="custom-select paddown" name="name">
+                <!--            <option selected>Open this select menu</option>-->
+                {% for i in data %}
+                <option value="{{i.firstname }}">{{ i.firstname }}</option>
+                {% endfor %}
+            </select>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Purpose" name="purpose" value="{{object.purpose}}" required>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" placeholder="Expense" name="expense"
+                    value="{{object.expense}}" required>
+            </div>
+            <div class="form-group">
+                <input type="Date" class="form-control" placeholder="Date" name="date"
+                    value="{{Expenses.date|date:'Y-m-d'}}" required>
+            </div>
+            <input type="submit" class="btn btn-primary btn-block" value="Update Expense">
+        </form>
+    </div>
+
+</body>
+
+</html>

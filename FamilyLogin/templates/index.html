@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/home.css'%}">
+</head>
+
+<body>
+    <div class="middle">
+        <div class="card" style="width: 100%;">
+            <img src="{% static 'images/family.jpg'%}" class="card-img-top" width=80% alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Family Expense Tracker</h5>
+                <p class="card-text">You can calculate monthly expenses of a family and many more.</p>
+                <a href="{% url 'FamilyLogin:LoginScreen'%}" class="btn btn-primary btn-lg btn-block">Get started</a>
+            </div>
+        </div>
+    </div>
+
+</body></html>

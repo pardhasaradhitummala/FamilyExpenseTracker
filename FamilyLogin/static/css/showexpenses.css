@@ -1,0 +1,10 @@
+.container{
+    width: 100%;
+    margin: 100px auto;
+}
+.table-dark{
+    background-color : #007bff;
+}
+.table-dark td, .table-dark th, .table-dark thead th {
+    border-color: #007bff;
+}

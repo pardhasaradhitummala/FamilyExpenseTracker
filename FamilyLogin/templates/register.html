@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/Register.css'%}">
+</head>
+
+<body>
+    <div class="middle">
+        <div class="card" style="width: 100%;">
+            <img src="{% static 'images/man.jpg'%}" class="card-img-top" width=200 alt="...">
+            <div class="card-body">
+
+                <form action="registeruser" method="post">
+                    {% csrf_token %}
+
+            {% if user_available %}
+            <div class="alert alert-danger" role="alert">
+                User already exists !
+            </div>
+            {% endif %}
+
+            {% if email_available %}
+            <div class="alert alert-danger" role="alert">
+                Email already exists !
+            </div>
+            {% endif %}
+                    <div class="form-group">
+                        <label for="exampleInputuser">User Name</label>
+                        <input type="text" class="form-control" id="exampleInputuser" aria-describedby="emailHelp"
+                            name="username" required>
+
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            name="email" required>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>

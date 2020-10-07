@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+
+{% include 'navbar.html' %}
+{% load static %}
+<html>
+<head>
+    <title>Add members</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/addmembers.css' %}">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <form method="post">
+            {%csrf_token %}
+            <input class="form-control form-control-lg" type="text" placeholder="First Name" name="firstname" value="{{data.firstname}}" required pattern="[a-zA-Z]+" title="Only Alphabehts accepted">
+            <input class="form-control form-control-lg" type="text" placeholder="Last name" name="lastname" value="{{data.lastname}}" required pattern="[a-zA-Z]+" title="Only Alphabehts accepted">
+            <input class="form-control form-control-lg" type="number" placeholder="Income" name="income" value="{{data.income}}" min="0"  required title="if no income give zero" pattern="[0-9]">
+            <input type="submit" value="Update Family Member" class="btn btn-primary btn-lg btn-block">
+        </form>
+
+    </div>
+
+</body></html>

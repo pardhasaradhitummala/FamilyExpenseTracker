@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+{% include 'navbar.html' %}
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/monthlyreport.css'%}">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container toppart">
+        <form class="form-inline" action="getconsolidatedreport" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group ">
+                        <label>From Date : </label>
+                        <input type="Date" class="form-control" placeholder="Date" name="fromdate"
+                            value="{{Expenses.date|date:'Y-m-d'}}" required>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group ">
+                        <label>To Date : </label>
+                        <input type="Date" class="form-control" placeholder="Date" name="todate"
+                            value="{{Expenses.date|date:'Y-m-d'}}" required>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <input type="submit" class="btn btn-primary" value="Filter">
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        {% if date_failed %}
+            <h3>From date should be less than to Date</h3>
+        {% endif %}
+        {% if coming == True %}
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Today</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Expense</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for key, value in data_today.items %}
+                                <tr>
+
+                                    <td>{{ key }}</td>
+                                    <td>{{ value }}</td>
+                                </tr>
+                                {% endfor %}
+                            <tr>
+                                <td><h5 class="text-primary">Total </h5></td>
+                                 <td><h5 class="text-primary">{{today_total}}</h5></td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Yesterday</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Expense</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for key, value in data_yesterday.items %}
+                                <tr>
+
+                                    <td>{{ key }}</td>
+                                    <td>{{ value }}</td>
+                                </tr>
+                                {% endfor %}
+                              <tr>
+                                <td><h5 class="text-primary">Total </h5></td>
+                                 <td><h5 class="text-primary">{{yesterday_total}}</h5></td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">This Month</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Expense</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for key, value in data_month.items %}
+                                <tr>
+
+                                    <td>{{ key }}</td>
+                                    <td>{{ value }}</td>
+                                </tr>
+                                {% endfor %}
+                              <tr>
+                                <td><h5 class="text-primary">Total </h5></td>
+                                 <td><h5 class="text-primary">{{month_total}}</h5></td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Consolidated Report</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Expense</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for key, value in data_consolidated.items %}
+                                <tr>
+
+                                    <td>{{ key }}</td>
+                                    <td>{{ value }}</td>
+                                </tr>
+                                {% endfor %}
+                              <tr>
+                                <td><h5 class="text-primary">Total </h5></td>
+                                 <td><h5 class="text-primary">{{con_total}}</h5></td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+
+</body>
+
+</html>
